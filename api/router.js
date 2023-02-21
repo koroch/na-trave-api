@@ -7,6 +7,7 @@ export const router = new Router();
 
 router.get('/login', users.login);
 router.post('/users', users.create);
+router.post('/findEmail', users.findEmail);
 
 router.post('/hunches', hunches.create);
 

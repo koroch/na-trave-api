@@ -82,3 +82,21 @@ export const hunches = async (ctx) => {
         hunches
     }
 }
+
+export const findEmail = async (ctx) => {
+    const email = ctx.request.body.email;
+
+    const user = await prisma.user.findUnique({
+        where: { email }
+    })
+
+    if(user){
+        ctx.body = {
+            username: user.username,
+            email: user.email
+        },
+        ctx.status = 400;
+    }else{
+        ctx.body = {}
+    }
+}
